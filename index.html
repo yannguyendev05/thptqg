@@ -37,22 +37,22 @@
 
 			<div class="flex-w flex-c cd100 p-b-82">
 				<div class="flex-col-c-m size2 how-countdown">
-					<span class="l1-txt3 p-b-9 days">35</span>
+					<span id="day" class="l1-txt3 p-b-9 days">35</span>
 					<span class="s1-txt1">Ngày</span>
 				</div>
 
 				<div class="flex-col-c-m size2 how-countdown">
-					<span class="l1-txt3 p-b-9 hours">17</span>
+					<span id="hour" class="l1-txt3 p-b-9 hours">17</span>
 					<span class="s1-txt1">Giờ</span>
 				</div>
 
 				<div class="flex-col-c-m size2 how-countdown">
-					<span class="l1-txt3 p-b-9 minutes">50</span>
+					<span id="min" class="l1-txt3 p-b-9 minutes">50</span>
 					<span class="s1-txt1">Phút</span>
 				</div>
 
 				<div class="flex-col-c-m size2 how-countdown">
-					<span class="l1-txt3 p-b-9 seconds">39</span>
+					<span id="sec" class="l1-txt3 p-b-9 seconds">39</span>
 					<span class="s1-txt1">Giây</span>
 				</div>
 			</div>
@@ -128,20 +128,32 @@
 	<script src="vendor/countdowntime/moment-timezone-with-data.min.js"></script>
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 	<script>
-		$('.cd100').countdown100({
-			// Set Endtime here
-			// Endtime must be > current time
-			endtimeYear: 0,
-			endtimeMonth: 0,
-			endtimeDate: 71,
-			endtimeHours: 15,
-			endtimeMinutes: 25,
-			endtimeSeconds: 0,
-			timeZone: "" 
-			// ex:  timeZone: "America/New_York", can be empty
-			// go to " http://momentjs.com/timezone/ " to get timezone
-		});
-	</script>
+
+const specialDay = new Date("2023-28-06").getTime();
+
+const updateCountdown = setInterval(() => {
+    const now = new Date().getTime();
+    const remainingTime = specialDay - now;
+
+    const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+    document.getElementById("day").innerHTML = `${days}`;
+
+document.getElementById("hour").innerHTML = `${hours}`;
+
+document.getElementById("min").innerHTML = `${minutes}`;
+
+document.getElementById("sec").innerHTML = `${seconds}`;
+
+    if (remainingTime < 0) {
+        clearInterval(updateCountdown);
+        document.getElementById("countdown-timer").innerHTML = "Special day has arrived!";
+    }
+}, 1000);
+
+</script>
 <!--===============================================================================================-->
 	<script src="vendor/tilt/tilt.jquery.min.js"></script>
 	<script >
