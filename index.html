@@ -69,50 +69,6 @@
 		
 	</div>
 
-	<!-- Modal Login -->
-	<div class="modal fade" id="subscribe" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog" role="document" data-dismiss="modal">
-			<div class="modal-subscribe where1-parent bg0 bor2 size4 p-t-54 p-b-100 p-l-15 p-r-15">
-				<button class="btn-close-modal how-btn2 fs-26 where1 trans-04">
-					<i class="zmdi zmdi-close"></i>
-				</button>
-
-				<div class="wsize1 m-lr-auto">
-					<h3 class="m1-txt1 txt-center p-b-36">
-						<span class="bor1 p-b-6">Subscribe</span>
-					</h3>
-
-					<p class="m1-txt2 txt-center p-b-40">
-						Contact Amdin!
-					</p>
-
-					<form class="contact100-form validate-form">
-						<div class="wrap-input100 m-b-10 validate-input" data-validate = "Name is required">
-							<input class="s1-txt4 placeholder0 input100" type="text" name="name" placeholder="Name">
-							<span class="focus-input100"></span>
-						</div>
-
-						<div class="wrap-input100 m-b-20 validate-input" data-validate = "Email is required: ex@abc.xyz">
-							<input class="s1-txt4 placeholder0 input100" type="text" name="email" placeholder="Email">
-							<span class="focus-input100"></span>
-						</div>
-
-						<div class="w-full">
-							<button class="flex-c-m s1-txt2 size5 how-btn1 trans-04">
-								Get Updates
-							</button>
-						</div>
-					</form>
-
-					<p class="s1-txt5 txt-center wsize2 m-lr-auto p-t-20">
-						And don’t worry, we hate spam too! You can unsubcribe at anytime.
-					</p>
-				</div>
-			</div>
-
-		</div>
-	</div>
-
 	
 
 <!--===============================================================================================-->	
@@ -129,24 +85,19 @@
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 	<script>
 
-const specialDay = new Date("2023-28-06").getTime();
+const specialDay = new Date("2023-06-28").getTime();
 
 const updateCountdown = setInterval(() => {
     const now = new Date().getTime();
     const remainingTime = specialDay - now;
-
     const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
     const hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
-    document.getElementById("day").innerHTML = `100`;
-
-document.getElementById("hour").innerHTML = `${now}`;
-
-document.getElementById("min").innerHTML = `${minutes}`;
-
-document.getElementById("sec").innerHTML = `${seconds}`;
-
+    document.getElementById("day").innerHTML = `${days}`;
+    document.getElementById("hour").innerHTML = `${hours}`;
+    document.getElementById("min").innerHTML = `${minutes}`;
+    document.getElementById("sec").innerHTML = `${seconds}`;
     if (remainingTime < 0) {
         clearInterval(updateCountdown);
         document.getElementById("countdown-timer").innerHTML = "Special day has arrived!";
