@@ -76,7 +76,7 @@
     <button class="btn-calculate" onclick="calculateAverage()">Tính điểm tốt nghiệp của bạn</button>
   </div>
 
-    <script src="js/sweetalert2.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.6/dist/sweetalert2.all.min.js"></script>
   <script>
     function calculateAverage() {
       var th1Score = parseFloat(document.getElementById("th1").value);
@@ -97,7 +97,7 @@
       }
 
       var totalScore = (((((((th1Score + th2Score + th3Score) / 3) + mathScore + literatureScore + englishScore + kkScore) / 4) * 7) + tb12Score * 3) / 10) + utScore;
-      var averageScore = totalScore / numberOfSubjects;
+     
       var roundedAverage = totalScore.toFixed(2);
 
       // Display SweetAlert popup
